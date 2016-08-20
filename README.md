@@ -7,7 +7,7 @@ Using [Dmitri Voronianski]'s [react-swipe], which uses [Swipe.js]
 
 #Demo
 
-[Soon]
+![gif](https://enzoferey.github.io/swipe-menu-panels-gif.gif)
 
 #Install
 
