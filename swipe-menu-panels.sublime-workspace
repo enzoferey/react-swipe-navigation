@@ -147,7 +147,7 @@
 			"file": "js/Carousel.js",
 			"settings":
 			{
-				"buffer_size": 4741,
+				"buffer_size": 3770,
 				"line_ending": "Windows"
 			}
 		},
@@ -163,7 +163,7 @@
 			"file": "js/main.js",
 			"settings":
 			{
-				"buffer_size": 214,
+				"buffer_size": 189,
 				"line_ending": "Windows"
 			}
 		},
@@ -367,15 +367,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4741,
+						"buffer_size": 3770,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3504,
+								3504
 							]
 						],
 						"settings":
@@ -385,7 +385,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1440.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -418,7 +418,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -427,15 +427,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 214,
+						"buffer_size": 189,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								60,
+								60
 							]
 						],
 						"settings":
@@ -475,7 +475,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

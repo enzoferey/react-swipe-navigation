@@ -58,6 +58,8 @@ a {
 .carousel div {
 	height: 100%;
 	background: pink;
+	text-align: center;
+	padding-top: 100px;
 }
 
 /********* ANIMATIONS ***********/

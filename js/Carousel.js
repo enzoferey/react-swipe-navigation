@@ -6,32 +6,31 @@ class Carousel extends React.Component {
 
     constructor() {
         super();
-        this.state = { position: 0, startX: 0, startY: 0, endX: 0, endY: 0, message: ''};
+        this.state = { position: 0, startX: 0, startY: 0, endX: 0, endY: 0};
         this.static = { minX: 0, maxY: 50 };
+        this.menu = [ 'Home', 'Blog', 'About', 'Contact' ];
     }
 
     init(node) {
         node.addEventListener('touchstart', this.handleStart.bind(this), false);
         node.addEventListener('touchmove', this.handleMove.bind(this), false);
         node.addEventListener('touchend', this.handleEnd.bind(this), false);
-        this.setState({ message: 'Init done' });
     }
 
     handleStart(e) {  
       // assuming single touch, e.touches is an Array of all touches,
       // but with single touch there is only one element
       let touch = e.touches[0];
-      this.setState( { startX: touch.screenX, startY: touch.screenY, message: 'Start done' } );
+      this.setState( { startX: touch.screenX, startY: touch.screenY } );
     }
 
     handleMove(e) {  
       let touch = e.touches[0];
-      this.setState( { endX: touch.screenX, endY: touch.screenY, message: 'Move done' } );
+      this.setState( { endX: touch.screenX, endY: touch.screenY } );
     }
 
     handleEnd() {  
       let xDelta = this.state.startX - this.state.endX;
-      this.setState({ message: 'End done, dif: ' + xDelta });
       // check to see if the delta of X is great enough to trigger a swipe gesture
       // also see if the Y delta wasn’t too drastic to be considered horizontal
       if (Math.abs(xDelta) > this.static.minX && Math.abs(this.state.startY - this.state.endY) < this.static.maxY) {
@@ -50,44 +49,20 @@ class Carousel extends React.Component {
     }
 
     render() {
+        var panels = this.menu.map(function(panel) {
+              return (
+                  <div key={panel}>
+                      {panel}
+                  </div>
+              );
+        }, this); // pass this to access state inside callback function
+
         return (
             <div ref="swipeZone" style={{ height: '100%' }}>
-
-                <Menu swipe={this.myClick} father={this} position={this.state.position} />       
-
+                <Menu swipe={this.myClick} father={this} list={this.menu} position={this.state.position} />       
+                
                 <ReactSwipe ref='habak' className="carousel" swipeOptions={{continuous: false}}>
-                    <div>
-                      HOME <br/>
-                      StartX: {this.state.startX} <br/>
-                      StartY: {this.state.startY} <br/><br/>
-                      EndX: {this.state.endX} <br/>
-                      EndY: {this.state.endY} <br/><br/>
-                      Last done: {this.state.message}
-                    </div>
-                    <div>
-                      BLOG <br/>
-                      StartX: {this.state.startX} <br/>
-                      StartY: {this.state.startY} <br/><br/>
-                      EndX: {this.state.endX} <br/>
-                      EndY: {this.state.endY} <br/><br/>
-                      Last done: {this.state.message}
-                    </div>
-                    <div>
-                      ABOUT <br/>
-                      StartX: {this.state.startX} <br/>
-                      StartY: {this.state.startY} <br/><br/>
-                      EndX: {this.state.endX} <br/>
-                      EndY: {this.state.endY} <br/><br/>
-                      Last done: {this.state.message}
-                    </div>
-                    <div>
-                      CONTACT <br/>
-                      StartX: {this.state.startX} <br/>
-                      StartY: {this.state.startY} <br/><br/>
-                      EndX: {this.state.endX} <br/>
-                      EndY: {this.state.endY} <br/><br/>
-                      Last done: {this.state.message}
-                    </div>
+                    {panels}
                 </ReactSwipe>
             </div>
         );
@@ -110,14 +85,18 @@ class Menu extends React.Component {
 
     render(){
         var myClass = 'active-menu position' + this.props.position;
+
+        var menuItems = this.props.list.map(function(item, i) {
+            return (
+                <a key={item} onClick={ this.props.swipe.bind(this.props.father, i) } className="menu-item">{item}</a>
+            );
+        }, this);
+
         return (
             <div id="menu">
                 <div className={myClass} key="active-menu"></div>
 
-                <a onClick={this.props.swipe.bind(this.props.father, 0)} className="menu-item">Home</a>
-                <a onClick={this.props.swipe.bind(this.props.father, 1)} className="menu-item">Blog</a>
-                <a onClick={this.props.swipe.bind(this.props.father, 2)} className="menu-item">About</a>
-                <a onClick={this.props.swipe.bind(this.props.father, 3)} className="menu-item">Contact</a>
+                {menuItems}
             </div>
         );
     }
