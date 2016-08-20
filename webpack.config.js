@@ -7,7 +7,7 @@ module.exports = {
 	devServer: {
 		inline: true, // auto reload
 		port: 8000,
-		host: '192.168.1.105' // to access with mobile
+		host: '192.168.1.105' // to access with mobile fill with your ip
 	},
 	module: {
 		loaders: [
