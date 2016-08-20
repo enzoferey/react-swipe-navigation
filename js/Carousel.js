@@ -1,13 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import ReactSwipe from './ReactSwipe';
-import Swipe from './Swipe';
 
 class Carousel extends React.Component {
 
     constructor() {
         super();
         this.state = { position: 0, startX: 0, startY: 0, endX: 0, endY: 0, message: ''};
+        this.static = { minX: 0, maxY: 50 };
+    }
+
+    init(node) {
+        node.addEventListener('touchstart', this.handleStart.bind(this), false);
+        node.addEventListener('touchmove', this.handleMove.bind(this), false);
+        node.addEventListener('touchend', this.handleEnd.bind(this), false);
+        this.setState({ message: 'Init done' });
     }
 
     handleStart(e) {  
@@ -27,7 +34,7 @@ class Carousel extends React.Component {
       this.setState({ message: 'End done, dif: ' + xDelta });
       // check to see if the delta of X is great enough to trigger a swipe gesture
       // also see if the Y delta wasn’t too drastic to be considered horizontal
-      if (Math.abs(xDelta) > 30 && Math.abs(this.state.startY - this.state.endY) < 50) {
+      if (Math.abs(xDelta) > this.static.minX && Math.abs(this.state.startY - this.state.endY) < this.static.maxY) {
         // acceptable swipe, now if it delta is negative, it’s a left swipe, otherwise right
         this.updatePosition();
       }
@@ -50,26 +57,44 @@ class Carousel extends React.Component {
 
                 <ReactSwipe ref='habak' className="carousel" swipeOptions={{continuous: false}}>
                     <div>
+                      HOME <br/>
                       StartX: {this.state.startX} <br/>
                       StartY: {this.state.startY} <br/><br/>
                       EndX: {this.state.endX} <br/>
                       EndY: {this.state.endY} <br/><br/>
                       Last done: {this.state.message}
                     </div>
-                    <div>Blog</div>
-                    <div>About</div>
-                    <div>Contact</div>
+                    <div>
+                      BLOG <br/>
+                      StartX: {this.state.startX} <br/>
+                      StartY: {this.state.startY} <br/><br/>
+                      EndX: {this.state.endX} <br/>
+                      EndY: {this.state.endY} <br/><br/>
+                      Last done: {this.state.message}
+                    </div>
+                    <div>
+                      ABOUT <br/>
+                      StartX: {this.state.startX} <br/>
+                      StartY: {this.state.startY} <br/><br/>
+                      EndX: {this.state.endX} <br/>
+                      EndY: {this.state.endY} <br/><br/>
+                      Last done: {this.state.message}
+                    </div>
+                    <div>
+                      CONTACT <br/>
+                      StartX: {this.state.startX} <br/>
+                      StartY: {this.state.startY} <br/><br/>
+                      EndX: {this.state.endX} <br/>
+                      EndY: {this.state.endY} <br/><br/>
+                      Last done: {this.state.message}
+                    </div>
                 </ReactSwipe>
             </div>
         );
     }
 
     componentDidMount(){
-        let node = ReactDOM.findDOMNode(this.refs.swipeZone);
-        node.addEventListener('touchstart', this.handleStart.bind(this), false);
-        node.addEventListener('touchmove', this.handleMove.bind(this), false);
-        node.addEventListener('touchend', this.handleEnd.bind(this), false);
-        this.setState({ message: 'Init done' });
+        this.init(ReactDOM.findDOMNode(this.refs.swipeZone));
     }
 
     componentWillUnmount(){
@@ -83,13 +108,6 @@ class Carousel extends React.Component {
 
 class Menu extends React.Component {
 
-    /*
-    this.click.bind(this, this.props.father, 0)
-
-    click(parent, number) {
-        this.setState({position: number});
-        this.props.swipe.call(parent, number);
-    }*/
     render(){
         var myClass = 'active-menu position' + this.props.position;
         return (

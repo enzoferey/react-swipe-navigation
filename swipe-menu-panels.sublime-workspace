@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"cw",
+				"cwu	React componentWillUnmount"
+			],
+			[
 				"onc",
 				"oncl	onClick"
 			],
@@ -140,26 +144,10 @@
 	"buffers":
 	[
 		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 440,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "js/Carousel.js",
 			"settings":
 			{
-				"buffer_size": 3337,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/Swipe.js",
-			"settings":
-			{
-				"buffer_size": 1454,
+				"buffer_size": 4741,
 				"line_ending": "Windows"
 			}
 		},
@@ -168,24 +156,7 @@
 			"settings":
 			{
 				"buffer_size": 2224,
-				"line_ending": "Windows",
-				"name": "import React, { Component, PropTypes } from 'react"
-			}
-		},
-		{
-			"file": "node_modules/react-swipeable/src/Swipeable.js",
-			"settings":
-			{
-				"buffer_size": 5050,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "node_modules/swipe-js-iso/swipe.js",
-			"settings":
-			{
-				"buffer_size": 15418,
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -250,12 +221,23 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/Enzo Ferey/Desktop/SPA-Base",
-		"/C/Users/Enzo Ferey/Desktop/SPA-Base/css",
-		"/C/Users/Enzo Ferey/Desktop/SPA-Base/js"
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/css",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/js"
 	],
 	"file_history":
 	[
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/js/App.js",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/css/style.css",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/js/main.js",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/js/ReactSwipe.js",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/js/Carousel.js",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/index.html",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/node_modules/swipe-js-iso/swipe.js",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/node_modules/react-swiper/Swiper.js",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/node_modules/react-swipe/index.js",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/node_modules/react-swipeable/src/Swipeable.js",
+		"/C/Users/Enzo Ferey/Desktop/swipe-menu-panels/js/Swipe.js",
 		"/C/Users/Enzo Ferey/Desktop/SPA-Base/js/Menu.js",
 		"/C/Users/Enzo Ferey/Desktop/SPA-Base/js/App.js",
 		"/C/Users/Enzo Ferey/Desktop/SPA-Base/node_modules/react-swipe/index.js",
@@ -376,53 +358,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 440,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								358,
-								358
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "js/Carousel.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3337,
+						"buffer_size": 4741,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2415,
-								2427
+								0,
+								0
 							]
 						],
 						"settings":
@@ -432,44 +385,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1020.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "js/Swipe.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1454,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								464,
-								464
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
+					"buffer": 1,
 					"file": "js/ReactSwipe.js",
 					"semi_transient": false,
 					"settings":
@@ -481,86 +404,25 @@
 						"selection":
 						[
 							[
-								881,
-								881
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"auto_name": "import React, { Component, PropTypes } from 'react",
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 780.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "node_modules/react-swipeable/src/Swipeable.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5050,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3000.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "node_modules/swipe-js-iso/swipe.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15418,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4096.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
+					"buffer": 2,
 					"file": "js/main.js",
 					"semi_transient": false,
 					"settings":
@@ -572,8 +434,8 @@
 						"selection":
 						[
 							[
-								210,
-								210
+								0,
+								0
 							]
 						],
 						"settings":
@@ -584,11 +446,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 3,
 					"file": "css/style.css",
 					"semi_transient": false,
 					"settings":
@@ -600,8 +462,8 @@
 						"selection":
 						[
 							[
-								728,
-								728
+								0,
+								0
 							]
 						],
 						"settings":
@@ -610,10 +472,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 720.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -655,7 +517,7 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "",
-	"project": "spa-base.sublime-project",
+	"project": "swipe-menu-panels.sublime-project",
 	"replace":
 	{
 		"height": 52.0
