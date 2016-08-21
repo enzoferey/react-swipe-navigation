@@ -1,6 +1,6 @@
 {
   "name": "react-swipe-navigation",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simple navigation system with swipe interaction for React",
   "scripts": {
     "start": "webpack-dev-server"
