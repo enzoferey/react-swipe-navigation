@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Carousel from './Carousel';
+import ReactSwipeNavigate from './ReactSwipeNavigate';
 
 require("../css/style.css");
 
-ReactDOM.render(<Carousel />, document.getElementById('app'))
+ReactDOM.render(<ReactSwipeNavigate />, document.getElementById('app'))

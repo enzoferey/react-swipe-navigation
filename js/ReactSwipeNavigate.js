@@ -1,14 +1,12 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import ReactDOM from 'react-dom';
 import ReactSwipe from './ReactSwipe';
 
-class Carousel extends React.Component {
+class ReactSwipeNavigate extends React.Component {
 
     constructor() {
         super(); // give context for this
         this.state = { position: 0, startX: 0, startY: 0, endX: 0, endY: 0};
-        this.static = { minX: 0, maxY: 50 }; // thresholds for valid swipe
-        //this.menu = [ 'Home', 'Blog', 'About', 'Contact' ];
     }
 
     init(node) {
@@ -47,7 +45,8 @@ class Carousel extends React.Component {
     handleEnd() {
         // Calculate X difference
         let xDelta = this.state.startX - this.state.endX;
-        if (Math.abs(xDelta) > this.static.minX && Math.abs(this.state.startY - this.state.endY) < this.static.maxY) {
+        if (Math.abs(xDelta) > this.props.minX && Math.abs(this.state.startY - this.state.endY) < this.props.maxY) 
+        {
             // valid swipe
             this.updatePosition();
         }
@@ -57,13 +56,15 @@ class Carousel extends React.Component {
         this.setState( { endX: e.clientX, endY: e.clientY } );
         
         let xDelta = this.state.startX - this.state.endX;
+        if(Math.abs(xDelta) > this.props.minX && Math.abs(this.state.startY - this.state.endY) < this.props.maxY)
+        {
+            if(xDelta < 0)
+                this.refs.panels.prev();
+            else
+                this.refs.panels.next();
 
-        if(xDelta < 0)
-            this.refs.panels.prev();
-        else
-            this.refs.panels.next();
-
-        this.updatePosition();
+            this.updatePosition();
+        }
     }
 
     myClick(panel) {
@@ -125,4 +126,18 @@ class Menu extends React.Component {
     }
 }
 
-export default Carousel
+
+ReactSwipeNavigate.defaultProps = {
+    menu: [ 'Home', 'Blog', 'About', 'Contact' ], 
+    // thresholds for valid swipe
+    minX: 5,
+    maxY: 50
+}
+
+ReactSwipeNavigate.propTypes = {
+    menu: PropTypes.array,
+    minX: PropTypes.number,
+    maxY: PropTypes.number
+}
+
+export default ReactSwipeNavigate
