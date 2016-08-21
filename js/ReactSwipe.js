@@ -74,7 +74,8 @@ ReactSwipe.defaultProps = {
         container: {
             overflow: 'hidden',
             visibility: 'hidden',
-            position: 'relative'
+            position: 'relative',
+            width: '100%'
         },
 
         wrapper: {

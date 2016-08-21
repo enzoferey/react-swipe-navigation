@@ -87,9 +87,9 @@ class ReactSwipeNavigate extends React.Component {
 
         return (
             <div ref="swipeZone" style={{ height: '100%' }}>
-                <Menu swipe={this.myClick} father={this} list={this.props.menu} position={this.state.position} />       
+                <Menu swipe={this.myClick} father={this} list={this.props.menu} position={this.state.position} speed={this.props.speed} />       
                 
-                <ReactSwipe ref="panels" className="carousel" swipeOptions={{continuous: false}}>
+                <ReactSwipe ref="panels" className="carousel" swipeOptions={{speed: this.props.speed, continuous: false}}>
                     {panels}
                 </ReactSwipe>
             </div>
@@ -100,29 +100,60 @@ class ReactSwipeNavigate extends React.Component {
         this.init(ReactDOM.findDOMNode(this.refs.swipeZone));
     }
 
+
     componentWillUnmount(){
         this.kill(ReactDOM.findDOMNode(this.refs.swipeZone));
     }
 }
 
 class Menu extends React.Component {
+    
+    constructor() {
+        super();
+        this.width = ''; 
+        this.styleActive = {};
+    }
+
+    componentWillMount(){
+        this.setCSS();
+    }
+
+    setCSS() {
+        // Set .menu-item width respect props received
+        this.width = 100 / this.props.list.length;
+
+        // Set transition css on .active-menu equal to slide speed
+        this.styleActive = {
+            WebkitTransition: this.props.speed + 'ms',
+            MozTransition: this.props.speed + 'ms',
+            Otransition: this.props.speed + 'ms',
+            transition: this.props.speed + 'ms',
+
+            width: this.width + '%',
+            left: 0
+        }
+    }
 
     render(){
-        var myClass = 'active-menu position' + this.props.position;
-
         var menuItems = this.props.list.map(function(item, i) {
             return (
-                <a key={item} onClick={ this.props.swipe.bind(this.props.father, i) } className="menu-item">{item}</a>
+                <a key={item} onClick={ this.props.swipe.bind(this.props.father, i) } className="menu-item" style={{ width: this.width + '%' }}>
+                    {item}
+                </a>
             );
         }, this);
 
         return (
             <div id="menu">
-                <div className={myClass} key="active-menu"></div>
+                <div ref="active" className='active-menu' style={this.styleActive} key="active-menu"></div>
 
                 {menuItems}
             </div>
         );
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.refs.active.style.left = this.width * nextProps.position + '%';
     }
 }
 

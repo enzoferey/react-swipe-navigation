@@ -31,6 +31,10 @@ a {
     -webkit-box-sizing: border-box;
 }
 
+.menu-item:last-child {
+	border-right: 1px solid black;
+}
+
 .active-menu {
 	position: absolute;
 	left: 0;
@@ -39,12 +43,6 @@ a {
 	background: #fff;
 	z-index: 2;
 	opacity: 0.5;
-	transition: 300ms; /* same as swipe.js transition */
-	-webkit-transition: 300ms;
-}
-
-.menu-item:last-child {
-	border-right: 1px solid black;
 }
 
 #app {
