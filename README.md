@@ -3,7 +3,7 @@
 
 #Credits
 
-Used a slightly modified version of [Dmitri Voronianski]'s [react-swipe] (which also uses [Swipe.js] itself).
+Used a slightly modified version of [Dmitri Voronianski]'s [react-swipe] which also uses [Swipe.js] itself.
 
 #Demo
 **[Check out the demo]** (best fit on mobile)
@@ -13,7 +13,7 @@ Used a slightly modified version of [Dmitri Voronianski]'s [react-swipe] (which 
 #Install
 
 ```
-npm install react swipe-js-iso react-swipe-navigation
+npm install react-swipe-navigation
 ```
 
 #Usage
@@ -47,7 +47,7 @@ ReactDOM.render(
   - `menu: ?Array` - any length, but more than 6 will not fit well on mobile
   - `minX: ?Number` - minimum X axis difference for valid swipe
   - `maxY: ?Number` - maximum Y axis difference for valid swipe
-  - `speed: ?Number` - speed of transitions
+  - `speed: ?Number` - speed of transitions (default of Swipe.js is 300ms)
   
 ([See defaults])
 
@@ -57,6 +57,6 @@ ReactDOM.render(
 [react-swipe]: <https://github.com/voronianski/react-swipe>
 [Swipe.js]: <https://github.com/thebird/swipe>
 [Check out the demo]: <https://enzoferey.github.io/react-swipe-navigation/demo>
-[See defaults]: <https://github.com/enzoferey/react-swipe-navigation>
+[See defaults]: <https://github.com/enzoferey/react-swipe-navigation/blob/master/js/ReactSwipeNavigate.js#L153>
 
 
