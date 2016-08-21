@@ -40,13 +40,12 @@ ReactDOM.render(
 ```
 
 ###Props
-  - `menu: ?Array` - exactly 4 items
+  - `menu: ?Array` - any length, but more than 6-8 will not fill well
   - `minX: ?Number` - minimum X axis difference for valid swipe
   - `maxY: ?Number` - maximum Y axis difference for valid swipe
+  - `speed: ?Number` - speed of transitions
   
 ([See defaults])
-  
-**NOTE: using default react-swipe props, if you change speed of transition you might want to change css transition value on .active-menu to match the effect**
 
 **MIT Licensed**
 
