@@ -1,0 +1,5 @@
+#Ignore everything
+*
+
+#Except
+!dist/index.js

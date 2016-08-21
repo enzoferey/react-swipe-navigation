@@ -1,17 +1,24 @@
 {
-  "name": "spa-base",
-  "version": "1.0.0",
-  "description": "",
+  "name": "react-swipe-navigation",
+  "version": "1.0.1",
+  "description": "A simple navigation system with swipe interaction for React",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server"
   },
-  "author": "",
+  "author": "Enzo Ferey",
   "license": "ISC",
   "dependencies": {
     "react": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "react-swipeable": "^3.6.0",
-    "react-swiper": "^0.1.5"
-  }
+    "react-dom": "^15.3.0"
+  },
+  "keywords": [
+    "react",
+    "swipe",
+    "navigation",
+    "component",
+    "panel",
+    "react-swipe-navigation",
+    "carousel"
+  ]
 }
