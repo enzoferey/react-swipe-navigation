@@ -154,13 +154,15 @@ ReactSwipeNavigate.defaultProps = {
     menu: [ 'Home', 'Blog', 'About', 'Contact' ], 
     // thresholds for valid swipe
     minX: 5,
-    maxY: 50
+    maxY: 50,
+    speed: 300
 }
 
 ReactSwipeNavigate.propTypes = {
     menu: PropTypes.array,
     minX: PropTypes.number,
-    maxY: PropTypes.number
+    maxY: PropTypes.number,
+    speed: PropTypes.number
 }
 
 export default ReactSwipeNavigate
