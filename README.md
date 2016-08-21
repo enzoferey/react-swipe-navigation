@@ -7,7 +7,7 @@ Used [Dmitri Voronianski]'s [react-swipe] with slightly modifiex syntax (which a
 
 #Demo
 
-![gif](https://enzoferey.github.io/swipe-menu-panels-gif.gif)
+![gif](https://enzoferey.github.io/react-swipe-navigation/swipe-menu-panels-gif.gif)
 
 #Install
 
