@@ -9,6 +9,8 @@ Used [Dmitri Voronianski]'s [react-swipe] with slightly modifiex syntax (which a
 
 ![gif](https://enzoferey.github.io/react-swipe-navigation/swipe-menu-panels-gif.gif)
 
+**[Checkout the demo]** (best fit on mobile)
+
 #Install
 
 [Soon]
@@ -22,5 +24,6 @@ Used [Dmitri Voronianski]'s [react-swipe] with slightly modifiex syntax (which a
 [Dmitri Voronianski]: <https://github.com/voronianski>
 [react-swipe]: <https://github.com/voronianski/react-swipe>
 [Swipe.js]: <https://github.com/thebird/swipe>
+[Checkout the demo]: <https://enzoferey.github.io/react-swipe-navigation/demo>
 
 
