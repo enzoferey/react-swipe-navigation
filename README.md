@@ -1,9 +1,9 @@
-# swipe-menu-panel
-> A simple panel menu with swipe interaction for mobille made with React
+# react-swipe-navigation
+> A simple navigation system based on panels with swipe interaction for both mobile and PC made with React
 
 **Credits**
 
-Using [Dmitri Voronianski]'s [react-swipe], which uses [Swipe.js]
+Used [Dmitri Voronianski]'s [react-swipe] with slightly modifiex syntax (which also uses [Swipe.js] itself).
 
 #Demo
 
