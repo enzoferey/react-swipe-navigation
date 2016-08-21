@@ -3,13 +3,12 @@
 
 #Credits
 
-Used [Dmitri Voronianski]'s [react-swipe] with slightly modifiex syntax (which also uses [Swipe.js] itself).
+Used a slightly modified version of [Dmitri Voronianski]'s [react-swipe] (which also uses [Swipe.js] itself).
 
 #Demo
+**[Check out the demo]** (best fit on mobile)
 
 ![gif](https://enzoferey.github.io/react-swipe-navigation/demo-gif.gif)
-
-**[Check out the demo]** (best fit on mobile)
 
 #Install
 
@@ -28,7 +27,12 @@ import ReactSwipeNavigation from 'react-swipe-navigation';
 class YourClass extends React.Component {
     render() {
         return (
-            <ReactSwipeNavigation menu={ ['Home', 'Blog', 'About', 'Contact'] } ></ReactSwipeNavigation>
+            <ReactSwipeNavigation menu={ ['Home', 'Blog', 'About', 'Contact'] } >
+                <div>Home content</div>
+                <div>Blog content</div>
+                <div>About content</div>
+                <div>Contact content</div>
+            </ReactSwipeNavigation>
         );
     }
 }
@@ -40,7 +44,7 @@ ReactDOM.render(
 ```
 
 ###Props
-  - `menu: ?Array` - any length, but more than 6-8 will not fill well
+  - `menu: ?Array` - any length, but more than 6 will not fit well on mobile
   - `minX: ?Number` - minimum X axis difference for valid swipe
   - `maxY: ?Number` - maximum Y axis difference for valid swipe
   - `speed: ?Number` - speed of transitions
