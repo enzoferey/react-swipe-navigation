@@ -1,7 +1,7 @@
 # swipe-menu-panel
 > A simple panel menu with swipe interaction for mobille made with React
 
-**Credits**
+#Credits
 
 Using [Dmitri Voronianski]'s [react-swipe], which uses [Swipe.js]
 

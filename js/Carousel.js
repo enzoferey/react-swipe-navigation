@@ -7,7 +7,7 @@ class Carousel extends React.Component {
     constructor() {
         super(); // give context for this
         this.state = { position: 0, startX: 0, startY: 0, endX: 0, endY: 0};
-        this.static = { minX: 0, maxY: 50 };
+        this.static = { minX: 0, maxY: 50 }; // thresholds for valid swipe
         this.menu = [ 'Home', 'Blog', 'About', 'Contact' ];
     }
 
@@ -15,19 +15,28 @@ class Carousel extends React.Component {
         node.addEventListener('touchstart', this.handleStart.bind(this), false);
         node.addEventListener('touchmove', this.handleMove.bind(this), false);
         node.addEventListener('touchend', this.handleEnd.bind(this), false);
+
+        node.addEventListener('mousedown', this.handleStartMouse.bind(this), false);
+        node.addEventListener('mouseup', this.handleEndMouse.bind(this), false);
     }
 
     kill(node) {
         node.removeEventListener('touchstart', this.handleStart);
         node.removeEventListener('touchmove', this.handleMove);
         node.removeEventListener('touchend', this.handleEnd);
+
+        node.removeEventListener('mousedown', this.handleStartMouse.bind(this));
+        node.removeEventListener('mouseup', this.handleEndMouse.bind(this));
     }
 
     handleStart(e) {  
-        // assuming single touch, e.touches is an Array of all touches,
-        // but with single touch there is only one element
+        //single touch
         let touch = e.touches[0];
         this.setState( { startX: touch.screenX, startY: touch.screenY } );
+    }
+
+    handleStartMouse(e) {
+        this.setState( { startX: e.clientX, startY: e.clientY } );
     }
 
     handleMove(e) {  
@@ -35,14 +44,26 @@ class Carousel extends React.Component {
         this.setState( { endX: touch.screenX, endY: touch.screenY } );
     }
 
-    handleEnd() {  
+    handleEnd() {
+        // Calculate X difference
         let xDelta = this.state.startX - this.state.endX;
-        // check to see if the delta of X is great enough to trigger a swipe gesture
-        // also see if the Y delta wasn’t too drastic to be considered horizontal
         if (Math.abs(xDelta) > this.static.minX && Math.abs(this.state.startY - this.state.endY) < this.static.maxY) {
-          // acceptable swipe, now if it delta is negative, it’s a left swipe, otherwise right
-          this.updatePosition();
+            // valid swipe
+            this.updatePosition();
         }
+    }
+
+    handleEndMouse(e) {
+        this.setState( { endX: e.clientX, endY: e.clientY } );
+        
+        let xDelta = this.state.startX - this.state.endX;
+
+        if(xDelta < 0)
+            this.refs.habak.prev();
+        else
+            this.refs.habak.next();
+
+        this.updatePosition();
     }
 
     myClick(panel) {
