@@ -54,15 +54,38 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Carousel = __webpack_require__(175);
+	var _ReactSwipeNavigate = __webpack_require__(175);
 
-	var _Carousel2 = _interopRequireDefault(_Carousel);
+	var _ReactSwipeNavigate2 = _interopRequireDefault(_ReactSwipeNavigate);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	__webpack_require__(178);
 
-	_reactDom2.default.render(_react2.default.createElement(_Carousel2.default, null), document.getElementById('app'));
+	_reactDom2.default.render(_react2.default.createElement(
+		_ReactSwipeNavigate2.default,
+		null,
+		_react2.default.createElement(
+			'div',
+			null,
+			'Home content'
+		),
+		_react2.default.createElement(
+			'div',
+			null,
+			'Blog content'
+		),
+		_react2.default.createElement(
+			'div',
+			null,
+			'About content'
+		),
+		_react2.default.createElement(
+			'div',
+			null,
+			'Contact content'
+		)
+	), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -21502,22 +21525,20 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Carousel = function (_React$Component) {
-	    _inherits(Carousel, _React$Component);
+	var ReactSwipeNavigate = function (_React$Component) {
+	    _inherits(ReactSwipeNavigate, _React$Component);
 
-	    function Carousel() {
-	        _classCallCheck(this, Carousel);
+	    function ReactSwipeNavigate() {
+	        _classCallCheck(this, ReactSwipeNavigate);
 
 	        // give context for this
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Carousel).call(this));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ReactSwipeNavigate).call(this));
 
 	        _this.state = { position: 0, startX: 0, startY: 0, endX: 0, endY: 0 };
-	        _this.static = { minX: 0, maxY: 50 }; // thresholds for valid swipe
-	        _this.menu = ['Home', 'Blog', 'About', 'Contact'];
 	        return _this;
 	    }
 
-	    _createClass(Carousel, [{
+	    _createClass(ReactSwipeNavigate, [{
 	        key: 'init',
 	        value: function init(node) {
 	            node.addEventListener('touchstart', this.handleStart.bind(this), false);
@@ -21560,7 +21581,7 @@
 	        value: function handleEnd() {
 	            // Calculate X difference
 	            var xDelta = this.state.startX - this.state.endX;
-	            if (Math.abs(xDelta) > this.static.minX && Math.abs(this.state.startY - this.state.endY) < this.static.maxY) {
+	            if (Math.abs(xDelta) > this.props.minX && Math.abs(this.state.startY - this.state.endY) < this.props.maxY) {
 	                // valid swipe
 	                this.updatePosition();
 	            }
@@ -21571,41 +21592,34 @@
 	            this.setState({ endX: e.clientX, endY: e.clientY });
 
 	            var xDelta = this.state.startX - this.state.endX;
+	            if (Math.abs(xDelta) > this.props.minX && Math.abs(this.state.startY - this.state.endY) < this.props.maxY) {
+	                if (xDelta < 0) this.refs.panels.prev();else this.refs.panels.next();
 
-	            if (xDelta < 0) this.refs.habak.prev();else this.refs.habak.next();
-
-	            this.updatePosition();
+	                this.updatePosition();
+	            }
 	        }
 	    }, {
 	        key: 'myClick',
 	        value: function myClick(panel) {
-	            this.refs.habak.slide(panel);
+	            this.refs.panels.slide(panel);
 	            this.updatePosition();
 	        }
 	    }, {
 	        key: 'updatePosition',
 	        value: function updatePosition() {
-	            this.setState({ position: this.refs.habak.getPos() });
+	            this.setState({ position: this.refs.panels.getPos() });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var panels = this.menu.map(function (panel) {
-	                return _react2.default.createElement(
-	                    'div',
-	                    { key: panel },
-	                    panel
-	                );
-	            }, this); // pass this to access state inside callback function
-
 	            return _react2.default.createElement(
 	                'div',
 	                { ref: 'swipeZone', style: { height: '100%' } },
-	                _react2.default.createElement(Menu, { swipe: this.myClick, father: this, list: this.menu, position: this.state.position }),
+	                _react2.default.createElement(Menu, { swipe: this.myClick, father: this, list: this.props.menu, position: this.state.position, speed: this.props.speed }),
 	                _react2.default.createElement(
 	                    _ReactSwipe2.default,
-	                    { ref: 'habak', className: 'carousel', swipeOptions: { continuous: false } },
-	                    panels
+	                    { ref: 'panels', className: 'carousel', swipeOptions: { speed: this.props.speed, continuous: false } },
+	                    this.props.children
 	                )
 	            );
 	        }
@@ -21621,7 +21635,7 @@
 	        }
 	    }]);
 
-	    return Carousel;
+	    return ReactSwipeNavigate;
 	}(_react2.default.Component);
 
 	var Menu = function (_React$Component2) {
@@ -21630,18 +21644,42 @@
 	    function Menu() {
 	        _classCallCheck(this, Menu);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Menu).apply(this, arguments));
+	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Menu).call(this));
+
+	        _this2.width = '';
+	        _this2.styleActive = {};
+	        return _this2;
 	    }
 
 	    _createClass(Menu, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            this.setCSS();
+	        }
+	    }, {
+	        key: 'setCSS',
+	        value: function setCSS() {
+	            // Set .menu-item width respect props received
+	            this.width = 100 / this.props.list.length;
+
+	            // Set transition css on .active-menu equal to slide speed
+	            this.styleActive = {
+	                WebkitTransition: this.props.speed + 'ms',
+	                MozTransition: this.props.speed + 'ms',
+	                Otransition: this.props.speed + 'ms',
+	                transition: this.props.speed + 'ms',
+
+	                width: this.width + '%',
+	                left: 0
+	            };
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var myClass = 'active-menu position' + this.props.position;
-
 	            var menuItems = this.props.list.map(function (item, i) {
 	                return _react2.default.createElement(
 	                    'a',
-	                    { key: item, onClick: this.props.swipe.bind(this.props.father, i), className: 'menu-item' },
+	                    { key: item, onClick: this.props.swipe.bind(this.props.father, i), className: 'menu-item', style: { width: this.width + '%' } },
 	                    item
 	                );
 	            }, this);
@@ -21649,16 +21687,34 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { id: 'menu' },
-	                _react2.default.createElement('div', { className: myClass, key: 'active-menu' }),
+	                _react2.default.createElement('div', { ref: 'active', className: 'active-menu', style: this.styleActive, key: 'active-menu' }),
 	                menuItems
 	            );
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            this.refs.active.style.left = this.width * nextProps.position + '%';
 	        }
 	    }]);
 
 	    return Menu;
 	}(_react2.default.Component);
 
-	exports.default = Carousel;
+	ReactSwipeNavigate.defaultProps = {
+	    menu: ['Home', 'Blog', 'About', 'Contact'],
+	    // thresholds for valid swipe
+	    minX: 5,
+	    maxY: 50
+	};
+
+	ReactSwipeNavigate.propTypes = {
+	    menu: _react.PropTypes.array,
+	    minX: _react.PropTypes.number,
+	    maxY: _react.PropTypes.number
+	};
+
+	exports.default = ReactSwipeNavigate;
 
 /***/ },
 /* 176 */
@@ -21790,7 +21846,8 @@
 	        container: {
 	            overflow: 'hidden',
 	            visibility: 'hidden',
-	            position: 'relative'
+	            position: 'relative',
+	            width: '100%'
 	        },
 
 	        wrapper: {
@@ -22413,7 +22470,7 @@
 
 
 	// module
-	exports.push([module.id, "html, body {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\theight: 100%;\r\n}\r\n\r\na {\r\n\ttext-decoration: none;\r\n}\r\n\r\n#menu {\r\n\twidth: 100%;\r\n\theight: 80px;\r\n\tposition: relative;\r\n}\r\n\r\n.menu-item {\r\n\tdisplay: block;\r\n\tfloat: left;\r\n\tbackground: grey;\r\n\twidth: 25%;\r\n\theight: 80px;\r\n\tline-height: 80px;\r\n\ttext-align: center;\r\n\tcolor: white;\r\n\tborder-left: 1px solid black;\r\n\tborder-bottom: 1px solid black;\r\n\r\n\tbox-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    -webkit-box-sizing: border-box;\r\n}\r\n\r\n.active-menu {\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\twidth: 25%;\r\n\theight: 80px;\r\n\tbackground: #fff;\r\n\tz-index: 2;\r\n\topacity: 0.5;\r\n\ttransition: 300ms; /* same as swipe.js transition */\r\n\t-webkit-transition: 300ms;\r\n}\r\n\r\n.menu-item:last-child {\r\n\tborder-right: 1px solid black;\r\n}\r\n\r\n#app {\r\n\theight: 100%;\r\n}\r\n\r\n.carousel {\r\n\theight: calc(100% - 80px);\r\n}\r\n\r\n.carousel div {\r\n\theight: 100%;\r\n\tbackground: pink;\r\n\ttext-align: center;\r\n\tpadding-top: 100px;\r\n}\r\n\r\n/********* ANIMATIONS ***********/\r\n\r\n.active-menu.position0 {\r\n\tleft: 0%;\r\n}\r\n\r\n.active-menu.position1 {\r\n\tleft: 25%;\r\n}\r\n\r\n.active-menu.position2 {\r\n\tleft: 50%;\r\n}\r\n\r\n.active-menu.position3 {\r\n\tleft: 75%;\r\n}\r\n", ""]);
+	exports.push([module.id, "html, body {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\theight: 100%;\r\n}\r\n\r\na {\r\n\ttext-decoration: none;\r\n}\r\n\r\n#app {\r\n\theight: 100%;\r\n\tmax-width: 768px;\r\n}\r\n\r\n#menu {\r\n\twidth: 100%;\r\n\theight: 80px;\r\n\tposition: relative;\r\n}\r\n\r\n.menu-item {\r\n\tdisplay: block;\r\n\tfloat: left;\r\n\tbackground: grey;\r\n\twidth: 25%;\r\n\theight: 80px;\r\n\tline-height: 80px;\r\n\ttext-align: center;\r\n\tcolor: white;\r\n\tborder-left: 1px solid black;\r\n\tborder-bottom: 1px solid black;\r\n\r\n\tbox-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    -webkit-box-sizing: border-box;\r\n}\r\n\r\n.menu-item:last-child {\r\n\tborder-right: 1px solid black;\r\n}\r\n\r\n.active-menu {\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\twidth: 25%;\r\n\theight: 80px;\r\n\tbackground: #fff;\r\n\tz-index: 2;\r\n\topacity: 0.5;\r\n}\r\n\r\n.carousel {\r\n\theight: calc(100% - 80px);\r\n}\r\n\r\n.carousel div {\r\n\theight: 100%;\r\n\tbackground: pink;\r\n\ttext-align: center;\r\n\tpadding-top: 100px;\r\n}", ""]);
 
 	// exports
 

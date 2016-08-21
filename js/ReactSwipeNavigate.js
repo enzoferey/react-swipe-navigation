@@ -77,20 +77,12 @@ class ReactSwipeNavigate extends React.Component {
     }
 
     render() {
-        var panels = this.props.menu.map(function(panel) {
-              return (
-                  <div key={panel}>
-                      {panel}
-                  </div>
-              );
-        }, this); // pass this to access state inside callback function, even if not using it in this example
-
         return (
             <div ref="swipeZone" style={{ height: '100%' }}>
                 <Menu swipe={this.myClick} father={this} list={this.props.menu} position={this.state.position} speed={this.props.speed} />       
                 
                 <ReactSwipe ref="panels" className="carousel" swipeOptions={{speed: this.props.speed, continuous: false}}>
-                    {panels}
+                    {this.props.children}
                 </ReactSwipe>
             </div>
         );
