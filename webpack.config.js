@@ -1,6 +1,8 @@
 module.exports = {
 	entry: './js/main.js',
 	output: {
+		library: 'ReactSwipeNavigation',
+		libraryTarget: 'umd',
 		path: './',
 		filename: 'index.js'
 	},

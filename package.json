@@ -1,16 +1,13 @@
 {
   "name": "react-swipe-navigation",
-  "version": "1.0.5",
+  "version": "1.1.5",
   "description": "A simple navigation system with swipe interaction for React",
+  "main": "./dist/index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "start http://192.168.1.105:8000/ & webpack-dev-server"
   },
   "author": "Enzo Ferey",
   "license": "MIT",
-  "dependencies": {
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0"
-  },
   "keywords": [
     "react",
     "swipe",
@@ -21,5 +18,8 @@
     "carousel"
   ],
   "homepage": "https://github.com/enzoferey/react-swipe-navigation",
-  "main": "./dist/index.js"
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  }
 }

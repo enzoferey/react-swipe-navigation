@@ -1,12 +1,14 @@
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import ReactSwipe from './ReactSwipe';
 
-class ReactSwipeNavigate extends React.Component {
+require("../css/style.css");
+
+class ReactSwipeNavigation extends Component {
 
     constructor() {
         super(); // give context for this
-        this.state = { position: 0, startX: 0, startY: 0, endX: 0, endY: 0};
+        this.state = { position: 0, startX: 0, startY: 0, endX: 0, endY: 0 };
     }
 
     init(node) {
@@ -59,29 +61,29 @@ class ReactSwipeNavigate extends React.Component {
         if(Math.abs(xDelta) > this.props.minX && Math.abs(this.state.startY - this.state.endY) < this.props.maxY)
         {
             if(xDelta < 0)
-                this.refs.panels.prev();
+                this._panels.prev();
             else
-                this.refs.panels.next();
+                this._panels.next();
 
             this.updatePosition();
         }
     }
 
     myClick(panel) {
-        this.refs.panels.slide(panel);
+        this._panels.slide(panel);
         this.updatePosition();
     }
 
     updatePosition() {
-        this.setState( { position: this.refs.panels.getPos() } )
+        this.setState( { position: this._panels.getPos() } )
     }
 
     render() {
         return (
-            <div ref="swipeZone" style={{ height: '100%' }}>
+            <div ref={(c) => this._swipeZone = c} style={{ height: '100%' }}>
                 <Menu swipe={this.myClick} father={this} list={this.props.menu} position={this.state.position} speed={this.props.speed} />       
                 
-                <ReactSwipe ref="panels" className="carousel" swipeOptions={{speed: this.props.speed, continuous: false}}>
+                <ReactSwipe ref={(c) => this._panels = c} className="carousel" swipeOptions={{speed: this.props.speed, continuous: false}}>
                     {this.props.children}
                 </ReactSwipe>
             </div>
@@ -89,16 +91,16 @@ class ReactSwipeNavigate extends React.Component {
     }
 
     componentDidMount(){
-        this.init(ReactDOM.findDOMNode(this.refs.swipeZone));
+        this.init(ReactDOM.findDOMNode(this._swipeZone));
     }
 
 
     componentWillUnmount(){
-        this.kill(ReactDOM.findDOMNode(this.refs.swipeZone));
+        this.kill(ReactDOM.findDOMNode(this._swipeZone));
     }
 }
 
-class Menu extends React.Component {
+class Menu extends Component {
     
     constructor() {
         super();
@@ -137,7 +139,7 @@ class Menu extends React.Component {
 
         return (
             <div id="menu">
-                <div ref="active" className='active-menu' style={this.styleActive} key="active-menu"></div>
+                <div ref={(c) => this._active = c} className='active-menu' style={this.styleActive} key="active-menu"></div>
 
                 {menuItems}
             </div>
@@ -145,12 +147,12 @@ class Menu extends React.Component {
     }
 
     componentWillReceiveProps(nextProps){
-        this.refs.active.style.left = this.width * nextProps.position + '%';
+        this._active.style.left = this.width * nextProps.position + '%';
     }
 }
 
 
-ReactSwipeNavigate.defaultProps = {
+ReactSwipeNavigation.defaultProps = {
     menu: [ 'Home', 'Blog', 'About', 'Contact' ], 
     // thresholds for valid swipe
     minX: 5,
@@ -158,11 +160,11 @@ ReactSwipeNavigate.defaultProps = {
     speed: 300
 }
 
-ReactSwipeNavigate.propTypes = {
+ReactSwipeNavigation.propTypes = {
     menu: PropTypes.array,
     minX: PropTypes.number,
     maxY: PropTypes.number,
     speed: PropTypes.number
 }
 
-export default ReactSwipeNavigate
+export default ReactSwipeNavigation
