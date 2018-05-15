@@ -19,21 +19,17 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import ReactSwipeNavigation from 'react-swipe-navigation';
 
-class YourClass extends React.Component {
-    render() {
-        return (
-            <ReactSwipeNavigation menu={ ['Home', 'Blog', 'About', 'Contact'] } >
-                <div>Home content</div>
-                <div>Blog content</div>
-                <div>About content</div>
-                <div>Contact content</div>
-            </ReactSwipeNavigation>
-        );
-    }
-}
+const Navigation = () => (
+    <ReactSwipeNavigation menu={ ['Home', 'Blog', 'About', 'Contact'] } >
+        <div>Home content</div>
+        <div>Blog content</div>
+        <div>About content</div>
+        <div>Contact content</div>
+    </ReactSwipeNavigation>
+);
 
 ReactDOM.render(
-    <YourClass />, 
+    <Navigation />, 
     document.getElementById('app')
 );
 ```
