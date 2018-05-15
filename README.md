@@ -1,10 +1,6 @@
 # react-swipe-navigation
 > A simple navigation system based on panels with swipe interaction for both mobile and PC made with React
 
-## Credits
-
-Used a slightly modified version of [Dmitri Voronianski]'s [react-swipe] which also uses [Swipe.js] itself.
-
 ## Demo
 **[Check out the demo]** (best fit on mobile)
 
@@ -18,7 +14,7 @@ npm install react-swipe-navigation
 
 ## Usage
 
-```js
+```jsx
 import React from 'react'
 import ReactDOM from 'react-dom';
 import ReactSwipeNavigation from 'react-swipe-navigation';
@@ -49,6 +45,11 @@ ReactDOM.render(
   - `speed: ?Number` - speed of transitions (default is Swipe.js's default, 300ms)
   
 ([See defaults])
+
+## Credits
+
+Used a slightly modified version of [Dmitri Voronianski]'s [react-swipe] which also uses [Swipe.js] itself.
+
 
 **MIT Licensed**
 
