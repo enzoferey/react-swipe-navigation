@@ -35,10 +35,10 @@ ReactDOM.render(
 ```
 
 ## Props
-  - `menu: ?Array` - any length, but more than 6 will not fit well on mobile
-  - `minX: ?Number` - minimum X axis difference for valid swipe
-  - `maxY: ?Number` - maximum Y axis difference for valid swipe
-  - `speed: ?Number` - speed of transitions (default is Swipe.js's default, 300ms)
+  - `menu: Array of String` - any length, but more than 6 will not fit well on mobile
+  - `minX: Number` - minimum X axis pixels difference for valid swipe
+  - `maxY: Number` - maximum Y axis pixels difference for valid swipe
+  - `speed: Number` - speed of transitions (default is Swipe.js's default, 300ms)
   
 ([See defaults])
 
